@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.au.cpsc.checkpoint4.QueryViewController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <HBox spacing="5.0">
+         <children>
+            <Label text="Connection Status:" />
+            <Label fx:id="connectionStatusLabel" text="Not Connected" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="150.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-border-color: black; -fx-border-width: 2;">
+         <children>
+            <Label text="Database URL:" />
+            <TextField fx:id="urlTextField" prefWidth="350.0" text="jdbc:mysql://localhost/hospital">
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin>
+            </TextField>
+            <Label layoutX="10.0" layoutY="10.0" text="Username:" />
+            <TextField fx:id="usernameTextField" layoutX="38.0" layoutY="10.0" prefWidth="150.0" text="root">
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin>
+            </TextField>
+            <Label layoutX="187.0" layoutY="10.0" text="Password:" />
+            <TextField fx:id="passwordTextField" layoutX="215.0" layoutY="10.0" prefWidth="150.0" text="password">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connectButtonAction" text="Connect">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="seedButton" disable="true" mnemonicParsing="false" onAction="#seedButtonAction" text="Seed Data" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="30.0" layoutY="60.0" spacing="5.0">
+         <children>
+            <Label fx:id="connectionFailedLabel" text="Connection Failed! Please check the connection info and try again." textFill="RED" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="67.0" spacing="5.0">
+         <children>
+            <ComboBox fx:id="queryTypeComboBox" disable="true" prefWidth="250.0" promptText="Select a query type..." />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <ComboBox fx:id="queryComboBox" disable="true" prefWidth="600.0" promptText="Select a query...">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </ComboBox>
+            <Button fx:id="executeQueryButton" disable="true" mnemonicParsing="false" onAction="#executeQueryButtonAction" text="Execute Query" />
+         </children>
+      </HBox>
+      <StackPane alignment="CENTER_LEFT">
+         <children>
+            <HBox fx:id="patientHBox" alignment="CENTER_LEFT" spacing="20.0" visible="false">
+               <children>
+                  <TextField fx:id="patientIDTextField" promptText="Patient ID" />
+                  <Label text="OR" />
+                  <TextField fx:id="patientFirstTextField" promptText="Patient First Name" />
+                  <TextField fx:id="patientLastTextField" promptText="Patient Last Name" />
+               </children>
+            </HBox>
+            <HBox fx:id="doctorHBox" alignment="CENTER_LEFT" spacing="20.0" visible="false">
+               <children>
+                  <TextField fx:id="doctorIDTextField" promptText="Doctor ID" />
+                  <Label text="OR" />
+                  <TextField fx:id="doctorFirstTextField" promptText="Doctor First Name" />
+                  <TextField fx:id="doctorLastTextField" promptText="Doctor Last Name" />
+               </children>
+            </HBox>
+            <HBox fx:id="treatmentHBox" alignment="CENTER_LEFT" spacing="20.0" visible="false">
+               <children>
+                  <TextField fx:id="treatmentIDTextField" promptText="Treatment ID" />
+               </children>
+            </HBox>
+            <HBox fx:id="dateHBox" spacing="20.0" visible="false">
+               <children>
+                  <DatePicker fx:id="startDatePicker" promptText="Start Date" />
+                  <DatePicker fx:id="endDatePicker" promptText="End Date" />
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <TableView fx:id="queryView" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>
